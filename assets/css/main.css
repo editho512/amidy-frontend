@@ -1,0 +1,51 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components {
+  .active {
+    @apply bg-primary rounded-full mr-1;
+  }
+
+  .card {
+    @apply flex flex-col justify-center w-full rounded-md bg-white;
+  }
+
+  .card-body {
+    @apply border border-white p-1
+  }
+
+  .card-header {
+    @apply rounded-t-md border h-10;
+  }
+
+  .card-footer {
+    @apply rounded-b-md border h-10;
+  }
+
+
+  .auth-label {
+    @apply text-gray-400 w-full text-xs;
+  }
+
+  .auth-input {
+    @apply transition ease-in-out delay-150 duration-300 bg-third border-b-2 border-gray-600 placeholder-gray-600 w-3/4 outline-none h-10 py-3 text-gray-400;
+  }
+
+  .auth-input:focus {
+    @apply border-b-2 border-primary;
+  }
+
+  .auth-header-btn-active{
+    @apply text-gray-300 ml-4 border-b-2 border-primary pb-2;
+  }
+
+  @screen lg {
+
+    .active {
+      @apply p-1;
+    }
+  }
+}
