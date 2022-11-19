@@ -57,12 +57,15 @@ export default {
         file: 'fr-FR.js'
       }
     ],
-    strategy: 'prefix_except_default',
+    strategy: 'prefix_and_default',
     parsePages: false,   // Disable babel parsing
     defaultLocale: 'fr',
     lazy: true,
     langDir: 'lang/',
-
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'my_custom_cookie_name'
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

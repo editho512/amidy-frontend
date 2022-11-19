@@ -1,4 +1,6 @@
 import login from './en/login'
+import collaborator from './en/collaborator'
+
 
 export default async (context, locale) => {
   return await Promise.resolve({
@@ -7,10 +9,11 @@ export default async (context, locale) => {
       home: 'Home',
       communication: 'Communications',
       notification: 'Notifications',
-      user: 'Users',
+      collaborator: 'Collaborators',
       setting : 'Settings'
     },
-    login : login
+    login: login,
+    collaborator : collaborator
   })
 }
 

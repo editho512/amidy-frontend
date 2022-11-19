@@ -1,11 +1,11 @@
 <template>
   <div class="w-full place-self-start">
-    <router-link :to="url" :class="['flex gap-2', active ]">
+    <nuxt-link :to="localePath(url)" :class="['flex gap-2', active ]">
         <slot name="itemIcon"></slot>
       <span class="max-lg:hidden">
           {{ name }}
       </span>
-    </router-link>
+    </nuxt-link>
 
   </div>
 </template>
@@ -31,7 +31,8 @@ export default {
     active() {
       return this.is_active ? 'active' : ''
     }
-  }
+  },
+
 }
 
 </script>

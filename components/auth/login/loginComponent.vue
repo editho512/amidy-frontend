@@ -56,9 +56,9 @@ export default {
   },
   methods: {
     async login() {
-      this.$store.commit("loginStore/email", this.email)
-      this.$store.commit("loginStore/password", this.password)
-      await this.$store.dispatch('loginStore/login').then((data) => {
+      this.$store.commit("userStore/email", this.email)
+      this.$store.commit("userStore/password", this.password)
+      await this.$store.dispatch('userStore/login').then((data) => {
         if (data.status == true) {
           //if grant
         }

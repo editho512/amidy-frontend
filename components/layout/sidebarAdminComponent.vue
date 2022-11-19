@@ -1,7 +1,7 @@
 <template>
 
-  <div class="max-lg:col-span-1 col-span-2 bg-third  pt-4 pl-2 text-white flex flex-col justify-items-center gap-5">
-    <ItemSidebarAdminComponent :is_active="true" :name="$t('sidebar.home')">
+  <div class="max-lg:col-span-1 col-span-2 bg-third  pt-4 pl-2 text-white flex flex-col justify-items-center gap-5 admin-sidebar">
+    <ItemSidebarAdminComponent :is_active="false" :name="$t('sidebar.home')">
         <template v-slot:itemIcon>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6">
@@ -33,7 +33,7 @@
       </template>
     </ItemSidebarAdminComponent>
 
-    <ItemSidebarAdminComponent :name="$t('sidebar.user')" url="/users">
+    <ItemSidebarAdminComponent :name="$t('sidebar.collaborator')" :url="'/collaborator'">
 
       <template v-slot:itemIcon>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -62,13 +62,18 @@
 <script>
 
 import ItemSidebarAdminComponent from './itemSidebarAdminComponent.vue';
-import itemSidebarAdminComponent from './itemSidebarAdminComponent.vue';
 
 export default {
-    comments: {
-        itemSidebarAdminComponent
-    },
+
     components: { ItemSidebarAdminComponent }
 }
 
 </script>
+
+<style scoped>
+
+/* exact link will show the primary color for only the exact matching link */
+a.nuxt-link-exact-active {
+  color: white
+}
+</style>
