@@ -1,5 +1,6 @@
 import login from './en/login'
 import collaborator from './en/collaborator'
+import button from './en/button'
 
 
 export default async (context, locale) => {
@@ -12,6 +13,7 @@ export default async (context, locale) => {
       collaborator: 'Collaborators',
       setting : 'Settings'
     },
+    button : button,
     login: login,
     collaborator : collaborator
   })

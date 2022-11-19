@@ -5,7 +5,7 @@
     <!--Navbar-->
     <div class="grid grid-cols-12 h-5/6 drop-shadow-md ">
       <SidebarComponent></SidebarComponent>
-      <div class="col-span-10 bg-gray-100 shadow-inner p-1">
+      <div class="col-span-10 max-lg:col-span-11 bg-gray-100 shadow-inner p-1">
 
         <nuxt></nuxt>
 
