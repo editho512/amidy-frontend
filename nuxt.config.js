@@ -79,6 +79,7 @@ export default {
   },
   axios: {
     credentials: true,
+    baseURL: 'http://localhost:8000',
   },
   auth: {
     strategies: {

@@ -21,15 +21,12 @@ export default {
     url: {
       type: String,
       default : '/'
-    },
-    is_active: {
-      type: Boolean,
-      default : false
     }
   },
   computed: {
     active() {
-      return this.is_active ? 'active' : ''
+      let path = this.$route.path.split('/')
+      return path.filter((el) => el == this.url).length > 0 ? 'nuxt-link-exact-active' : ''
     }
   },
 
