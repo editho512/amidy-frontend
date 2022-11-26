@@ -7,7 +7,7 @@
           <div class="col-span-4 max-md:col-span-5">
             <h2 class="title-2">{{ $t('collaborator.list.title') }}</h2>
           </div>
-          <div class="col-span-1  flex justify-end pr-2 max-sm:col-span-5 max-sm:justify-center">
+          <div class="col-span-1  flex justify-end pr-2 max-sm:col-span-5 ">
             <addButton @add="$router.push({ path: localePath('/collaborator/newCollaborator') })"></addButton>
           </div>
 
@@ -30,7 +30,8 @@ export default {
   layout: 'adminLayout',
   components: {
     cardComponent,  addButton, listCollaboratorComponent
-  }
+  },
+
 }
 
 </script>

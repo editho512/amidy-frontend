@@ -3,132 +3,53 @@
     <template #table-header>
       <tr>
         <th scope="col" class="text-lg  text-primary font-extrabold px-6 py-4 text-left">
-          #
+          Name
         </th>
         <th scope="col" class="text-lg  text-primary font-extrabold px-6 py-4 text-left">
-          First
+          Email
         </th>
         <th scope="col" class="text-lg  text-primary font-extrabold px-6 py-4 text-left">
-          Last
+          Phone
         </th>
         <th scope="col" class="text-lg  text-primary font-extrabold px-6 py-4 text-left">
-          Handle
+          Actions
         </th>
       </tr>
     </template>
     <template #table-body>
-      <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-          Mark
+      <tr v-for="(user, key) in userList" :key="key" class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+          {{ user.name}} {{ user.firstname}}
         </td>
         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-          Otto
+          {{user.email}}
         </td>
         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-          @mdo
-        </td>
-      </tr>
-      <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-          Jacob
+          {{user.phone}}
         </td>
         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-          Thornton
-        </td>
-        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-          @fat
+          <seeButton></seeButton>
+          <editButton></editButton>
+          <removeButton></removeButton>
         </td>
       </tr>
-      <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-          Larry
-        </td>
-        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-          Wild
-        </td>
-        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-          @twitter
-        </td>
-      </tr>
+
     </template>
   </tableComponent>
-  <!-- <div class="flex flex-col">
-    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="overflow-hidden">
-          <table class="min-w-full">
-            <thead class="bg-white border-b">
-              <slot name="table-header"></slot>
-              <tr>
-                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                  #
-                </th>
-                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                  First
-                </th>
-                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                  Last
-                </th>
-                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                  Handle
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <slot name="table-body"></slot>
 
-              <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  Mark
-                </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  Otto
-                </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  @mdo
-                </td>
-              </tr>
-              <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  Jacob
-                </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  Thornton
-                </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  @fat
-                </td>
-              </tr>
-              <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  Larry
-                </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  Wild
-                </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  @twitter
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </template>
 
 <script>
 import tableComponent from '../widget/tableComponent.vue'
+import seeButton from '../button/seeButton.vue';
+import editButton from '../button/editButton.vue';
+import removeButton from '../button/removeButton.vue';
+
+import userListMixin from '../../mixins/user/userListMixin';
 export default {
+  mixins : [userListMixin],
   components: {
-    tableComponent
+    tableComponent, seeButton, editButton, removeButton
   }
 }
 </script>

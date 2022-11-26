@@ -1,7 +1,23 @@
+import { ObjectToFormData } from '../assets/js/helpers'
+
 export const state = () => ({
-  email: '',
-  password: ''
+  login : {
+    email: '',
+    password: '',
+  },
+  collaborator: {},
+  userType : []
+
 })
+
+export const getters = {
+  getUser: (state) => {
+    return state.login.user
+  },
+  getUserType: (state) => {
+    return state.userType
+  }
+}
 
 export const mutations = {
 
@@ -10,11 +26,16 @@ export const mutations = {
   },
   password(state, password ) {
     state.password = password
+  },
+
+  collaborator(state, collaborator) {
+    state.collaborator = collaborator
   }
 
 }
 
 export const actions = {
+
   async login({ commit, state }) {
       let res = {
         status: true,
@@ -33,5 +54,16 @@ export const actions = {
 
       return res
 
+  },
+  async addCollaborator({ commit, state }) {
+
+    let formData = ObjectToFormData(state.collaborator)
+
+    return await this.$axios.$post('/api/collaborator/add', formData, { 'Content-Type': 'multipart/form-data' })
+    .then((data) => data)
+    .catch(({ response }) => response.data )
+
   }
+
 }
+

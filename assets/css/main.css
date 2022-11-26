@@ -54,6 +54,10 @@
     @apply text-xl font-bold ml-2 py-3  text-gray-600;
   }
 
+  .title-3 {
+    @apply text-gray-500 text-lg border-b border-gray-500;
+  }
+
   .btn-primary {
     @apply py-1 px-2 text-white bg-blue-500 rounded-lg;
   }
@@ -78,6 +82,15 @@
     @apply bg-gray-600 text-gray-200;
   }
 
+
+    .btn-danger {
+      @apply px-2 py-1 text-white bg-red-500 rounded-lg;
+    }
+
+    .btn-danger:hover {
+      @apply bg-red-600 text-red-200;
+    }
+
   .app-input {
     @apply w-full h-10 px-3 mx-2 placeholder-gray-300 outline outline-none rounded-sm transition ease-in-out delay-75 duration-200 border-b-2 ;
   }
@@ -88,6 +101,14 @@
 
   .app-label {
     @apply font-bold text-gray-500;
+  }
+
+  .app-input-error {
+    @apply border-b border-red-600 placeholder-red-300;
+  }
+
+  .app-input-error-message{
+    @apply text-red-400 pt-2;
   }
 
   @screen lg {

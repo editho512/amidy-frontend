@@ -1,4 +1,6 @@
 export default {
   add: 'Add',
-  back: 'Back'
+  back: 'Back',
+  cancel: 'Cancel',
+  validate: 'Validate'
 }
