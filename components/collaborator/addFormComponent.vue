@@ -2,7 +2,7 @@
   <div>
 
     <div class="grid grid-cols-3 ">
-      <profilePhotoComponent :url="photo.url" @focusPhoto="focusPhoto"></profilePhotoComponent>
+      <profilePhotoComponent :url="photoview === '' ? photo.url : photoview" @focusPhoto="focusPhoto"></profilePhotoComponent>
       <div class="col-span-2 max-lg:col-span-3 pr-6 pl-2">
         <h3 class="title-3 py-2">{{ $t('collaborator.add.title_personal') }}</h3>
         <div class="grid grid-cols-6 mt-3">
@@ -76,7 +76,7 @@
 
         <div class="hidden" >
           <div class="">
-            <input type="file" ref="photo" name="photo" @change="setPhoto">
+            <input  type="file" ref="photo" name="photo" @change="setPhoto">
           </div>
         </div>
 
@@ -143,26 +143,41 @@ import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   mixins: [userTypeMixin],
+
   components: {
     profilePhotoComponent
   },
+
   props: {
+
     errors: {
       default: []
     },
+
     typeDefault: {
-      type: String,
       default: 'Administrator'
+    },
+
+    user: {
+      default() {
+        return {}
+      }
+    },
+
+    photo: {
+      default() {
+        return {
+           file: null,
+           url: null
+        }
+      }
     }
+
   },
+
   data() {
     return {
-      photo: {
-        file: null,
-        url: null,
-      },
-      user: {
-      },
+      photoview: '',
     }
   },
 
@@ -170,28 +185,37 @@ export default {
     focusPhoto() {
       this.$refs.photo.click()
     },
-    setPhoto(e) {
-      this.photo.file = e.target.files[0]
-      this.photo.url = URL.createObjectURL(this.photo.file)
-      this.user.photo = this.photo.file
 
-      this.setCollaborator(this.user)
+    setPhoto(e) {
+
+      this.photoview = URL.createObjectURL(e.target.files[0])
+
+      this.user['photo'] = e.target.files[0]
+
+      this.setCollaborator({ ...this.user })
     },
+
     customVModel(field, value) {
       this.user[field] = value
-      this.setCollaborator(this.user)
+
+      let updatedUser = { ...this.user }
+
+      if (this.photoview == '') delete updatedUser.photo;
+
+      this.setCollaborator(updatedUser)
     },
+
     ...mapMutations({
       setCollaborator : 'userStore/collaborator'
     }),
 
   },
+
   created() {
     this.user['type'] = this.typeDefault
     this.setCollaborator(this.user)
-  }
 
-
+  },
 
 }
 </script>

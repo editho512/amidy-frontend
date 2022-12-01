@@ -29,8 +29,8 @@
         </td>
         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
           <seeButton></seeButton>
-          <editButton></editButton>
-          <removeButton></removeButton>
+          <editButton @edit="$router.push({ path: localePath('/collaborator/edit/' + user.id)})"></editButton>
+          <removeButton @remove="$router.push({ path: localePath('/collaborator/delete/' + user.id)})"></removeButton>
         </td>
       </tr>
 

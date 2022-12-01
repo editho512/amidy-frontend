@@ -16,6 +16,9 @@ export const getters = {
   },
   getUserType: (state) => {
     return state.userType
+  },
+  getEditUser: (state) => {
+    return state.collaborator
   }
 }
 
@@ -59,11 +62,27 @@ export const actions = {
 
     let formData = ObjectToFormData(state.collaborator)
 
-    return await this.$axios.$post('/api/collaborator/add', formData, { 'Content-Type': 'multipart/form-data' })
+    return await this.$axios.$post('/api/user/add', formData, { 'Content-Type': 'multipart/form-data' })
     .then((data) => data)
     .catch(({ response }) => response.data )
 
-  }
+  },
+  async updateCollaborator({ commit, state }, id) {
+
+    let formData = ObjectToFormData({ ...state.collaborator, id: id })
+
+    return await this.$axios.$post('/api/user/update/' + id, formData, { 'Content-Type': 'multipart/form-data' })
+    .then((data) => data)
+    .catch(({ response }) => response.data )
+
+  },
+  async deleteCollaborator({ commit, state }, id) {
+
+    return await this.$axios.$get('/api/user/delete/' + id)
+      .then((data) => data)
+      .catch(({ response }) => response.data)
+
+  },
 
 }
 

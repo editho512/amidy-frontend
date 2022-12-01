@@ -1,5 +1,5 @@
 <template>
-  <button :disabled="loading" class="mt-3 btn-success w-100" @click="$emit('validate')">
+  <button :disabled="loading || disabled" class="mt-3 btn-success w-100" @click="$emit('validate')">
     <smallSpinner w="6" h="6" v-if="loading"></smallSpinner>
     <validateIcon v-else h="6" w="6"></validateIcon>
     <span class="pt-8">
@@ -19,6 +19,10 @@ export default {
   props: {
 
     loading: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     }

@@ -7,7 +7,7 @@
   </svg>
 
   <img v-show="url != null" :src="url" alt="" class="w-60 h-60 rounded-full">
-  <button class="" v-on:click="$emit('focusPhoto')">
+  <button class="" v-on:click="$emit('focusPhoto')" v-if="!static">
     <div class="absolute top-[200px] left-[100px] bg-white p-2 rounded-full border-2 border-primary  hover:bg-gray-50">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="w-6 h-6 text-primary font-extrabold">
@@ -28,8 +28,11 @@
 export default {
   props: {
     url: {
-      type: String,
       default: null
+    },
+    static: {
+      type: Boolean,
+      default : false
     }
   }
 }

@@ -8,7 +8,7 @@
             <h2 class="title-2">{{ $t('collaborator.add.title') }}</h2>
           </div>
           <div class="col-span-1  flex justify-end pr-2 max-sm:col-span-5 ">
-            <backIcon></backIcon>
+            <backIcon @back="$router.push({ path: localePath('/collaborator/') })"></backIcon>
           </div>
 
         </div>
@@ -19,7 +19,7 @@
       </template>
       <template #footer-card>
        <div class="flex justify-end pr-2 gap-2">
-          <cancelButton></cancelButton>
+          <cancelButton @cancle="$router.push({ path: localePath('/collaborator/') })"></cancelButton>
           <validateButton :loading="false" @validate="save" ></validateButton>
        </div>
       </template>
@@ -29,11 +29,11 @@
 </template>
 <script>
 
-import cardComponent from '../../components/widget/cardComponent.vue';
-import backIcon from '../../components/button/backButton.vue';
-import addFormComponent from '../../components/collaborator/addFormComponent.vue';
-import cancelButton from '../../components/button/cancelButton.vue';
-import validateButton from '../../components/button/validateButton.vue';
+import cardComponent from '../../../components/widget/cardComponent.vue';
+import backIcon from '../../../components/button/backButton.vue';
+import addFormComponent from '../../../components/collaborator/addFormComponent.vue';
+import cancelButton from '../../../components/button/cancelButton.vue';
+import validateButton from '../../../components/button/validateButton.vue';
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -48,7 +48,7 @@ export default {
   methods: {
     async save() {
       await this.addCollaborator().then((res) => {
-              if (res.errors === undefined) this.$router.push({ path: this.localePath('/collaborator') })
+        if (res.errors === undefined) this.$router.push({ path: this.localePath('/collaborator'), query : {action : 'added'} })
               else this.errors = res.errors
             })
     },

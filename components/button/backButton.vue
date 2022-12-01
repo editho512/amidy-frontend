@@ -1,5 +1,5 @@
 <template>
-  <button class="mt-3 btn-secondary w-100" v-on:click="$emit('add')">
+  <button class="mt-3 btn-secondary w-100" v-on:click="$emit('back')">
     <backIcon h="6" w="6"></backIcon>
     <span class="pt-8">
       {{ $t('button.back') }}
