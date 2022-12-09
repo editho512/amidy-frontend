@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1 class="title-1">{{ $t('sidebar.collaborator') }}</h1>
-    <notifications position="bottom right" classes="vue-notification" />
     <cardComponent>
       <template #header-card>
         <div class="grid grid-cols-5 ">
@@ -43,6 +42,7 @@ export default {
 
       this.$notify({ type: 'success', text: message })
     }
+
   }
 
 }

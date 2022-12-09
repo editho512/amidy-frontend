@@ -123,7 +123,9 @@
               </div>
               <div class="col-span-2 max-lg:col-span-6">
                 <select id="small"  @change="(e) => customVModel(e.target.name, e.target.value)" name="type"
-                  class="block w-full p-2 mb-6 text-sm text-gray-400 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-400 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  class="block w-full p-2 mb-6 text-sm text-gray-400 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary
+                  focus:border-primary dark:bg-gray-200 dark:border-gray-400 dark:placeholder-gray-200 dark:text-white
+                  dark:focus:ring-primary dark:focus:border-primary">
                   <option v-for="(type, index) in userType" :key="index" :value="type" :selected="type == typeDefault">{{ type }}</option>
                 </select>
                 <div class="app-input-error-message" v-if="errors.type != undefined">{{ errors.type[0] }}</div>

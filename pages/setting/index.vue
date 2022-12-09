@@ -1,38 +1,82 @@
 <template>
-  <div class="grid grid-cols-2">
-    <div class="col-span-1">
-      <div class="grid grid-cols-6 mt-4">
-        <div class="col-span-2 max-lg:col-span-6">
-          <label for="phone" class="app-label">Phone:</label>
-        </div>
-        <div class="col-span-4 max-lg:col-span-6">
-          <input  type="text" name="phone" :placeholder="'Your phone'"
-            :class="['app-input', errors.phone != undefined ? 'app-input-error' : '']">
-          <div class="app-input-error-message" v-if="errors.phone != undefined">{{ errors.phone[0] }}</div>
-        </div>
-      </div>
-      </div>
-    </div>
+  <div>
+      <cardComponent>
+        <template #header-card>
+          <div class="grid grid-cols-5 ">
+            <div class="col-span-4 max-md:col-span-5">
+              <h2 class="title-2">{{ $t('setting.title') }}</h2>
+            </div>
+            <div class="col-span-1 max-md:col-span-5 text-right pr-2">
+              <editButton v-if="!edit" @edit="edit=true"></editButton>
+            </div>
+
+          </div>
+        </template>
+        <template #body-card>
+          <generalFormComponent :errors="errors" :setting="settings" :edit="edit"></generalFormComponent>
+        </template>
+        <template #footer-card>
+          <div class="flex justify-end pr-2 gap-2">
+            <cancelButton v-if="edit" @cancle="reset"></cancelButton>
+            <validateButton @validate="validate" :disabled="!edit" ></validateButton>
+          </div>
+        </template>
+      </cardComponent>
+
   </div>
 </template>
 
 <script>
+import cardComponent from '../../components/widget/cardComponent.vue';
+import generalFormComponent from '../../components/setting/generalFormComponent.vue';
+import validateButton from '../../components/button/validateButton.vue';
+import editButton from '../../components/button/editButton.vue';
+import cancelButton from '../../components/button/cancelButton.vue';
+import settingMixin from '../../mixins/setting/settingMixin'
+
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  transition: {
-    name: 'collaborator',
-    mode: 'out-in'
-  },
+  mixins: [settingMixin],
+
   layout: 'adminLayout',
   components: {
+    generalFormComponent, cardComponent, validateButton, editButton, cancelButton
   },
-  mounted() {
-    if (this.$route.query.action != undefined) {
-      let action = this.$route.query.action
-      let message = this.$t('collaborator.list.' + action)
-
-      this.$notify({ type: 'success', text: message })
+  data() {
+    return {
+      errors: [],
+      edit: false
     }
-  }
+  },
+  computed: {
+    ...mapGetters({
+      setting: 'settingStore/getSetting'
+    })
+  },
+  methods: {
+    reset() {
+      this.edit = false
+      this.errors = {}
+    },
+    notify() {
+      let message = "The setting is updated"
+      this.$notify({ type: 'success', text: message })
+    },
+    ...mapActions({
+      validateSetting: 'settingStore/updateSetting'
+    }),
+    async validate() {
+      await this.validateSetting().then((res) => {
+        if (res.errors === undefined) {
+          this.notify()
+          this.reset()
+        }
+        else this.errors = res.errors
+      })
+    }
+  },
+
 
 }
 </script>

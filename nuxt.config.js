@@ -25,8 +25,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/notifications-ssr', ssr: true },
-    { src: '~/plugins/notifications-client', ssr: false }
+    { src: '~/plugins/notifications-client', ssr: false },
+    '~/plugins/Multiselect.js'
   ],
+
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

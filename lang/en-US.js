@@ -1,7 +1,10 @@
 import login from './en/login'
 import collaborator from './en/collaborator'
 import button from './en/button'
-
+import setting from './en/setting'
+import tag from './en/tag'
+import category from './en/category'
+import product from './en/product'
 
 export default async (context, locale) => {
   return await Promise.resolve({
@@ -11,11 +14,18 @@ export default async (context, locale) => {
       communication: 'Communications',
       notification: 'Notifications',
       collaborator: 'Collaborators',
-      setting : 'Settings'
+      setting: 'Settings',
+      tag: 'Tags',
+      category: 'Categories',
+      product : 'Products'
     },
     button : button,
     login: login,
-    collaborator : collaborator
+    collaborator: collaborator,
+    setting: setting,
+    tag: tag,
+    category: category,
+    product : product
   })
 }
 

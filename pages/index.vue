@@ -25,28 +25,8 @@ export default {
       this.$router.push('/login')
     },
   },
+
 }
 </script>
 
-<style>
-.vue-notification {
-  margin: 0 5px 5px;
-  padding: 10px;
-  font-size: 12px;
-  color: #ffffff;
 
-  background: #44A4FC;
-  border-left: 5px solid #187FE7;
-
-}
-
-.collaborator-enter-active,
-.collaborator-leave-active {
-  transition: opacity .3s;
-}
-
-.collaborator-enter,
-.collaborator-leave-active {
-  opacity: 0;
-}
-</style>
