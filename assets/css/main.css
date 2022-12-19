@@ -14,7 +14,7 @@
   }
 
   .card-body {
-    @apply border border-white p-1 h-max;
+    @apply border-x p-1 h-max;
   }
 
   .card-header {

@@ -26,7 +26,8 @@ export default {
   plugins: [
     { src: '~/plugins/notifications-ssr', ssr: true },
     { src: '~/plugins/notifications-client', ssr: false },
-    '~/plugins/Multiselect.js'
+    '~/plugins/Multiselect.js',
+
   ],
 
 

@@ -5,6 +5,7 @@ import setting from './fr/setting'
 import tag from './fr/tag'
 import category from './fr/category'
 import product from './fr/product'
+import dropfile from './fr/dropfile'
 
 export default async (context, locale) => {
   return await Promise.resolve({
@@ -25,7 +26,8 @@ export default async (context, locale) => {
     setting: setting,
     tag: tag,
     category: category,
-    product : product
+    product: product,
+    dropfile : dropfile
   })
 }
 

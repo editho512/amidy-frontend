@@ -1,3 +1,6 @@
+import { ObjectToFormData, getObjectExceptKey } from '../assets/js/helpers'
+
+
 export const state = () => ({
   product: {}
 })
@@ -12,16 +15,33 @@ export const actions = {
 
   async add({ commit, state }) {
 
+    let formData = ObjectToFormData(getObjectExceptKey(state.product, 'photos'))
+    if (state.product.photos != undefined) {
+      for (let i = 0; i < state.product.photos.length; i++) {
+        formData.append('photos[]', state.product.photos[i])
+      }
+    }
+
     return await this.$axios.$post('/api/product/add/',
-      state.product,
+      formData, { 'Content-Type': 'multipart/form-data' }
     )
       .then((data) => data)
       .catch(({ response }) => response.data)
   },
 
   async edit({ commit, state }, id) {
-    return await this.$axios.$patch('/api/product/update/' + id,
-      state.product,
+
+    let formData = ObjectToFormData(getObjectExceptKey(state.product, 'photos'))
+
+    if (state.product.photos != undefined) {
+      for (let i = 0; i < state.product.photos.length; i++) {
+        formData.append('photos[]', state.product.photos[i])
+      }
+    }
+
+
+    return await this.$axios.$post('/api/product/update/',
+      formData, { 'Content-Type': 'multipart/form-data' }
     )
       .then((data) => data)
       .catch(({ response }) => response.data)

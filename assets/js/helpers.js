@@ -8,4 +8,22 @@ export const ObjectToFormData = (myObj) => {
   return formData
 }
 
+export const getObjectExceptKey = (obj, key) => {
+
+  const asArray = Object.entries(obj);
+
+  const filtered = asArray.filter(([k, value]) => k != key);
+
+  return  Object.fromEntries(filtered);
+
+}
+
+export const getObjectKeyBegin = (obj, get) => {
+  let asArray = Object.entries(obj);
+
+  let filtered = asArray.filter(([k, value]) => k.includes(get));
+
+  return filtered
+}
+
 

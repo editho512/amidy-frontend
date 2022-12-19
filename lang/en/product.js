@@ -3,10 +3,24 @@ export default {
   add: {
     title: 'Add a new product',
     name: 'Name',
-    type: 'Type'
+    placeholderName:'Type the name',
+    category: 'Category',
+    placeholderCategory: 'Select the categories',
+    tag: "Tag",
+    placeholderTag: "Select the tags",
+    stock_alert: "Stock alert",
+    placeholderStockAlert: "Type the stock alert",
+    description: 'Description',
+    placeholderDescription: 'Type la description',
+    unit: 'unit of measure',
+    placeholderUnit: "Type the unit of measure"
+
   },
   edit: {
     title: 'Update {name} product'
+  },
+  show: {
+    title: 'Show {name} product'
   },
   delete: {
     title: 'Delete {name} product',

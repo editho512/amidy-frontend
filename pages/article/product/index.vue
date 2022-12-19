@@ -16,9 +16,7 @@
 
       </template>
       <template #body-card>
-
-        <!-- <listCategoryComponent></listCategoryComponent> -->
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse exercitationem sequi quidem necessitatibus distinctio enim, ducimus dolor eos, nulla iste excepturi et dolores minima rerum eum magni accusamus, nam nobis?</p>
+        <listProductComponent></listProductComponent>
       </template>
     </cardComponent>
   </div>
@@ -27,11 +25,12 @@
 <script>
 import cardComponent from '../../../components/widget/cardComponent.vue';
 import addButton from '../../../components/button/addButton.vue';
+import listProductComponent from '../../../components/product/listProductComponent.vue';
 
 export default {
   layout: 'adminLayout',
   components: {
-    addButton, cardComponent,
+    addButton, cardComponent, listProductComponent
   },
   mounted() {
     if (this.$route.query.action != undefined) {
