@@ -31,6 +31,10 @@ import listCategoryComponent from '../../../components/category/listCategoryComp
 
 export default {
   layout: 'adminLayout',
+  transition: {
+    name: 'default',
+    mode: 'out-in'
+  },
   components: {
     addButton, cardComponent, listCategoryComponent
   },

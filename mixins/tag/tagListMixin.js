@@ -6,10 +6,24 @@ export default {
   },
 
   methods: {
-    getTags: function (type = 'article') {
-      this.$axios.$get('/api/tag/' + type)
+    getTags: function (trigger = "onLoad", type = 'article') {
+
+      let params = ""
+      if (this.page != undefined) params = this.paginatedUrl()
+      if (this.search != undefined) params += "&" + this.searchUrl()
+
+      if (trigger == "allLoad") params = ""
+
+      this.$axios.$get('/api/tag/' + type + "/" + params)
         .then((data) => {
-          this.tagList = data
+
+          if (this.paginated === true) {
+            this.tagList = data.data
+            this.paginate(data.options)
+          }
+          else this.tagList = data
+
+          if (trigger === 'onClick') this.$router.push({ path: this.localePath('/article/tag/') + params })
         })
     },
 

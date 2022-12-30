@@ -38,7 +38,10 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   mixins: [settingMixin],
-
+  transition: {
+    name: 'default',
+    mode: 'out-in'
+  },
   layout: 'adminLayout',
   components: {
     generalFormComponent, cardComponent, validateButton, editButton, cancelButton
@@ -80,3 +83,15 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.collaborator-enter-active,
+.collaborator-leave-active {
+  transition: opacity .3s;
+}
+
+.collaborator-enter,
+.collaborator-leave-active {
+  opacity: 0;
+}
+</style>

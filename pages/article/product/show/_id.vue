@@ -16,19 +16,23 @@
         </div>
       </template>
       <template #body-card>
-        <div class="flex">
-          <div class="grid grid-cols-4 rounded-lg w-1/4  text-white bg-gradient-to-br from-third to-primary">
-            <div class="col-span-1 flex flex-row  justify-center items-center m-1 rounded-lg border-2 border-white">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                class="w-10 h-10">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-
-            </div>
-            <div class="col-span-3 flex flex-col ">
-              <h3 class="my-1 text-2xl ">Prix</h3>
-              <p class="my-2 text-xl">3.000.000 ar</p>
+        <statisticProductSkeleton v-if="product == undefined || Object.keys(product).length == 0">
+        </statisticProductSkeleton>
+        <statisticProductComponent v-else :myProduct="product"></statisticProductComponent>
+        <div class="mt-3">
+          <tabsComponent :active-key="selectedTab"
+            :options="[$t('product.show.photos'), $t('product.show.orders'), $t('product.show.deliveries')]"
+            @change="(data) => changeTabs(data)"></tabsComponent>
+        </div>
+        <div v-if="selectedTab === 0">
+          <showPhotoListSkeleton v-if="product.photos == undefined || product.photos.length == 0">
+          </showPhotoListSkeleton>
+          <div v-else class="grid my-4">
+            <div class="flex flex-wrap justify-center">
+              <div v-for="(img, key) in product.photos" :key="key"
+                class="p-1 m-2 bg-white border rounded max-sm:w-full max-lg:w-1/3 w-1/5 transform transition duration-300 hover:scale-105 relative">
+                <img :src="$axios.defaults.baseURL + '/uploads/product/' + img.photo" alt="" class="h-full">
+              </div>
             </div>
           </div>
         </div>
@@ -46,15 +50,31 @@
 <script>
 import cardComponent from '../../../../components/widget/cardComponent.vue';
 import backIcon from '../../../../components/button/backButton.vue';
-import newProductComponent from '../../../../components/product/newProductComponent.vue';
-import productEditMixin from '../../../../mixins/product/productEditMixin'
+import productEditMixin from '../../../../mixins/product/productEditMixin';
+import tabsComponent from '../../../../components/widget/tabsComponent.vue';
 
+import statisticProductComponent from '../../../../components/product/statisticProductComponent.vue';
+import statisticProductSkeleton from '../../../../components/product/statisticProductSkeleton.vue';
+import showPhotoListSkeleton from '../../../../components/product/showPhotoListSkeleton.vue';
 export default {
   layout: 'adminLayout',
   mixins: [productEditMixin],
   components: {
-    cardComponent, backIcon, newProductComponent
-  }
+    cardComponent, backIcon, statisticProductComponent, tabsComponent, statisticProductSkeleton, showPhotoListSkeleton
+  },
+  data() {
+    return {
+      selectedTab: 0
+    }
+  },
+  created() {
+    if (this.$route.query.tabs) this.changeTabs(this.$route.query.tabs)
+  },
+  methods: {
+    changeTabs(key) {
+      this.selectedTab = parseInt(key)
+    }
+  },
 }
 
 </script>

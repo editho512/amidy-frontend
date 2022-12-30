@@ -20,7 +20,15 @@ export default {
     title: "Mettre à jour le produit {name}"
   },
   show: {
-    title: 'Voir le produit {name} '
+    title: 'Voir le produit {name} ',
+    photos: 'Photos',
+    orders: 'Commandes',
+    deliveries: 'Livraisons',
+    sellingPrice: 'Prix de vente',
+    stock: 'Stock',
+    ordered: 'Commandés',
+    delivered: 'Livré'
+
   },
   delete: {
     title: "Supprimer le produit {name} ",

@@ -2,13 +2,22 @@ import { ObjectToFormData, getObjectExceptKey } from '../assets/js/helpers'
 
 
 export const state = () => ({
-  product: {}
+  product: {},
+  price: {},
+  stock: null,
 })
 
 export const mutations = {
   product(state, product) {
     state.product = product
   },
+  price(state, price) {
+    state.price = price
+  },
+  stock(state, stock) {
+    state.stock = stock
+  }
+
 }
 
 export const actions = {
@@ -39,7 +48,6 @@ export const actions = {
       }
     }
 
-
     return await this.$axios.$post('/api/product/update/',
       formData, { 'Content-Type': 'multipart/form-data' }
     )
@@ -50,6 +58,22 @@ export const actions = {
   async delete({ commit, state }, id) {
     return await this.$axios.$delete('/api/product/delete/' + id,
       state.product,
+    )
+      .then((data) => data)
+      .catch(({ response }) => response.data)
+  },
+
+  async updatePrice({ commit, state }, id) {
+    return await this.$axios.$post('/api/product/price/' + id,
+      state.price,
+    )
+      .then((data) => data)
+      .catch(({ response }) => response.data)
+  },
+
+  async updateStock({ commit, state }, id) {
+    return await this.$axios.$post('/api/product/stock/' + id,
+      { "stock" : state.stock},
     )
       .then((data) => data)
       .catch(({ response }) => response.data)

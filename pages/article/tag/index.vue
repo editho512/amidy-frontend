@@ -30,6 +30,10 @@ import listTagComponent from '../../../components/tag/listTagComponent.vue'
 
 export default {
   layout: 'adminLayout',
+  transition: {
+    name: 'default',
+    mode: 'out-in'
+  },
   components: {
     addButton, listTagComponent, cardComponent
   },
@@ -46,3 +50,5 @@ export default {
 }
 
 </script>
+
+

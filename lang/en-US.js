@@ -6,6 +6,7 @@ import tag from './en/tag'
 import category from './en/category'
 import product from './en/product'
 import dropfile from './en/dropfile'
+import pagination from './en/pagination'
 
 export default async (context, locale) => {
   return await Promise.resolve({
@@ -27,7 +28,8 @@ export default async (context, locale) => {
     tag: tag,
     category: category,
     product: product,
-    dropfile : dropfile
+    dropfile: dropfile,
+    pagination : pagination
   })
 }
 

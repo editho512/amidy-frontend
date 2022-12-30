@@ -20,7 +20,14 @@ export default {
     title: 'Update {name} product'
   },
   show: {
-    title: 'Show {name} product'
+    title: 'Show {name} product',
+    photos: 'Photos',
+    orders: 'Orders',
+    deliveries: 'Deliveries',
+    sellingPrice: 'Selling price',
+    stock: 'Stock',
+    ordered: 'Ordered',
+    delivered : 'Delivered'
   },
   delete: {
     title: 'Delete {name} product',

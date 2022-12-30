@@ -19,7 +19,6 @@
       </template>
 
     </cardComponent>
-
   </div>
 </template>
 <script>
@@ -28,13 +27,14 @@ import addButton from '../../components/button/addButton.vue';
 import listCollaboratorComponent from '../../components/collaborator/listCollaboratorComponent.vue';
 export default {
   transition: {
-    name: 'collaborator',
+    name: 'default',
     mode: 'out-in'
   },
   layout: 'adminLayout',
   components: {
     cardComponent,  addButton, listCollaboratorComponent
   },
+
   mounted() {
     if (this.$route.query.action != undefined) {
       let action = this.$route.query.action
@@ -48,4 +48,7 @@ export default {
 }
 
 </script>
+
+
+
 

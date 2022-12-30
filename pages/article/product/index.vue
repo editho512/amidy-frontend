@@ -29,6 +29,10 @@ import listProductComponent from '../../../components/product/listProductCompone
 
 export default {
   layout: 'adminLayout',
+  transition: {
+    name: 'default',
+    mode: 'out-in'
+  },
   components: {
     addButton, cardComponent, listProductComponent
   },
