@@ -1,5 +1,7 @@
 <template>
-  <div class="grid grid-cols-12 h-1/8">
+  <div class="relative grid grid-cols-12 h-1/8">
+    <div v-if="sideBarOpened" class="bg-third w-full h-full opacity-25 hidden max-lg:block absolute inset-0 z-20">
+    </div>
     <div class="bg-primary text-white max-lg:col-span-1 col-span-2 flex justify-center pt-2 ">
       <div class="">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -64,6 +66,15 @@ import langSwitcherComponent from '../widget/langSwitcherComponent.vue';
 export default {
   components: {
     langSwitcherComponent
-  }
+  },
+  props: {
+    sideBarOpened: {
+      type: Boolean,
+      default: false
+    }
+  },
+
 }
 </script>
+
+

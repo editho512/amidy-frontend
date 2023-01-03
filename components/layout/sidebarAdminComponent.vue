@@ -1,8 +1,7 @@
 <template>
 
-  <div :class="[' col-span-2  bg-third  pt-4 pl-2 text-white flex flex-col justify-items-center gap-5 admin-sidebar transition duration-500 transform   max-lg:col-span-12',
-    contentView ? '' : '',
-    isOpen ? /* 'block max-lg:col-span-12 ' : ' max-lg:hidden ' */ 'max-lg:translate-x-0 ease-out' : ' max-lg:-translate-x-full ease-in '
+  <div :class="['col-span-2   bg-third  pt-4 pl-2 text-white flex flex-col justify-items-center gap-5 admin-sidebar max-lg:col-span-12 max-lg:col-span-3',
+    /// isOpen ? /* 'block max-lg:col-span-12 ' : ' max-lg:hidden ' */ ' max-lg:translate-x-0 ease-out' : ' max-lg:-translate-x-full ease-in '
   ]">
     <ItemSidebarAdminComponent name="Articles" url="article"
       :submenus="[{ name: $t('sidebar.product'), url: 'product' }, { name: $t('sidebar.category'), url: 'category' }, { name: $t('sidebar.tag'), url: 'tag' }]">

@@ -5,7 +5,7 @@
 
     <!-- shadow-->
     <div v-if="sideBarView" class="absolute top-4 right-4 z-50">
-      <button class="text-white" v-on:click="closeSideBar(false)">
+      <button class="text-white" v-on:click="sideBarView = false">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-10 h-10">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -14,20 +14,25 @@
       </button>
 
     </div>
-    <div v-if="sideBarView" class="bg-third w-screen h-screen absolute opacity-25 hidden max-lg:block z-40">
-    </div>
+
     <!-- shadow-->
     <!--Navbar-->
-    <NavbarComponent @toggleSideBar="openSideBar(true)"></NavbarComponent>
+    <NavbarComponent :sideBarOpened="sideBarView" @toggleSideBar="sideBarView = !sideBarView"></NavbarComponent>
     <!--Navbar-->
     <div class="grid grid-cols-12 h-5/6 drop-shadow-md ">
-      <SidebarComponent v-bind:is-open="sideBarView" v-bind:content-view="sideBarContentView"></SidebarComponent>
-      <div
-        :class="['col-span-10  bg-gray-100 shadow-inner p-1 transition duration-1000  max-lg:col-span-12 transform', contentView ? 'max-lg:hidden' : '']">
+      <SidebarComponent class="max-lg:hidden" v-bind:is-open="sideBarView">
+      </SidebarComponent>
+      <transition @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave" :css="false">
+        <SidebarComponent class="hidden max-lg:flex" v-if="sideBarView" v-bind:is-open="sideBarView">
+        </SidebarComponent>
+      </transition>
+      <div v-show="contentView"
+        :class="['col-span-10  bg-gray-100 shadow-inner p-1 transition duration-1000 max-lg:col-sm-0  max-lg:col-span-12  z-50',]">
 
         <nuxt></nuxt>
 
       </div>
+
     </div>
     <div class="flex justify-start ">
       <p class="text-gray-600 pt-4">
@@ -40,6 +45,7 @@
 
 import SidebarComponent from '../components/layout/sidebarAdminComponent.vue';
 import NavbarComponent from '../components/layout/navbarAdminComponent.vue';
+import gsap from 'gsap'
 
 export default {
 
@@ -52,32 +58,45 @@ export default {
   data() {
     return {
       sideBarView: false,
-      sideBarContentView: false,
-      contentView: false
+      contentView: true
     }
   },
   methods: {
-    openSideBar(value) {
-      this.contentToggle(true)
-      this.sideBarView = value != undefined ? value : !this.sideBarView
-
+    onBeforeEnter(el) {
+      console.log("lasa")
+      gsap.set(el, {
+        xPercent: -100,
+      })
     },
-    closeSideBar(value) {
-      this.sideBarView = value != undefined ? value : !this.sideBarView
-      setTimeout(() => {
-        this.sideBarContentToggle(false)
-        this.contentToggle(false)
-
-      }, 500)
-    },
-    contentToggle(value) {
-      this.contentView = value != undefined ? value : !this.contentView
-    },
-    sideBarContentToggle(value) {
-      this.sideBarContentView = value != undefined ? value : !this.sideBarContentView
+    onEnter,
+    onLeave(el, done) {
+      gsap.to(el, {
+        duration: 0.3,
+        ease: 'ease-out'
+      })
+      gsap.to(el, {
+        duration: 0.3,
+        xPercent: -100,
+        onComplete: () => {
+          done()
+        }
+      })
     }
   }
 }
+
+
+
+function onEnter(el, done) {
+  gsap.to(el, {
+    duration: 0.4,
+    xPercent: 0,
+    ease: 'ease-in',
+    onComplete: done
+  })
+}
+
+
 
 </script>
 
