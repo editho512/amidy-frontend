@@ -1,14 +1,24 @@
 <template>
   <div>
-    <div class="grid grid-cols-5  relative">
+    <div class="grid grid-cols-5  relative bg-gray-100">
       <!-- logo -->
-      <div class="col-span-2 text-third">
-        <p class="text-2xl p-2 font-Montserra "> <span class="font-graffiti">A</span>MIDY</p>
+      <div class="col-span-2 text-third ">
+        <div class="grid grid-cols-4">
+          <div class="col-span-1">
+            <p class="text-2xl p-2 font-Montserra "> <span class="font-graffiti">A</span>MIDY</p>
+          </div>
+          <div class="col-span-3 pt-3">
+            <div class="max-md:absolute left-[46%] flex   justify-center">
+              <cartButtonComponent>
+              </cartButtonComponent>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- logo -->
       <!-- sidebar -->
       <div class="col-span-3  flex flex-col max-md:static relative">
-        <div class=" hidden   max-md:flex max-md:justify-end pr-8 ">
+        <div class=" hidden   max-md:flex max-md:justify-end pr-8 pt-3">
           <button class="" v-on:click="isOpenned = !isOpenned">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-8 h-8">
@@ -20,7 +30,7 @@
         <ul
           class="flex  justify-center max-lg:gap-4  gap-8 max-md:flex-col max-sm:pr-0 bg-primary max-md:rounded-none rounded-l-full p-4 max-lg:pl-4  pl-24 max-md:absolute top-full left-8 right-8 w-84 text-white max-md:text-third z-45"
           :class="isOpenned ? '' : 'max-md:hidden'">
-          <itemSidebarCustomerComponent url="home" name="Home"></itemSidebarCustomerComponent>
+          <itemSidebarCustomerComponent url="home" name="HOME"></itemSidebarCustomerComponent>
           <itemSidebarCustomerComponent url="store" name="STORE"></itemSidebarCustomerComponent>
           <li class="font-bold">LOGIN</li>
           <li class="font-bold">SIGN UP</li>
@@ -37,14 +47,16 @@
 </template>
 <script>
 import itemSidebarCustomerComponent from './itemSidebarCustomerComponent.vue';
+import cartButtonComponent from '../cart/cartButtonComponent.vue';
+
 export default {
-  components: { itemSidebarCustomerComponent },
+  components: { itemSidebarCustomerComponent, cartButtonComponent },
   data() {
     return {
       isOpenned: false
-
     }
   },
+
 
 }
 

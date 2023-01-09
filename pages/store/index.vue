@@ -1,75 +1,111 @@
 <template>
-  <div class="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 max-sm:grid-cols-1 gap-4">
-    <div v-for="(product, index) in productList" :key="product.id"
-      class="col-span-1 justify-center w-76 max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
-        <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
-      </a>
-      <div class="px-5 pb-5">
-        <a href="#">
-          <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS,
-            Aluminium
-            Case, Starlight Sport</h5>
-        </a>
-        <div class="flex items-center mt-2.5 mb-5">
-          <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <title>First star</title>
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-            </path>
-          </svg>
-          <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <title>Second star</title>
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-            </path>
-          </svg>
-          <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <title>Third star</title>
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-            </path>
-          </svg>
-          <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <title>Fourth star</title>
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-            </path>
-          </svg>
-          <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <title>Fifth star</title>
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-            </path>
-          </svg>
-          <span
-            class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
-          <a href="#"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
-            to cart</a>
+  <div>
+    <div class="grid grid-cols-3 p-8 gap-8 z-30">
+      <div class="col-span-1 max-lg:col-span-3">
+        <div class="grid grid-cols-5">
+          <div class="col-span-1">
+            <label for="category">Category</label>
+          </div>
+          <div class="col-span-4">
+            <multiselect v-model="category" :options="categoryList" :multiple="true" :close-on-select="false"
+              :clear-on-select="false" :preserve-search="true" :placeholder="$t('product.add.placeholderCategory')"
+              label="name" track-by="name" :preselect-first="true" @input="sortByCategory">
+              <template slot="selection" slot-scope="{ values, search, isOpen }"><span class="multiselect__single"
+                  v-if="values.length &amp;&amp; !isOpen">{{ values.length }} selected</span></template>
+            </multiselect>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="col-span-1 max-lg:col-span-3">
+        <div class="grid grid-cols-5">
+          <div class="col-span-1">
+            <label for="">Tag</label>
+          </div>
+          <div class="col-span-4">
+            <multiselect v-model="tag" :options="tagList" :multiple="true" :close-on-select="false"
+              :clear-on-select="false" :preserve-search="true" :placeholder="$t('product.add.placeholderTag')"
+              label="name" track-by="name" :preselect-first="true" @input="sortByTag">
+              <template slot="selection" slot-scope="{ values, search, isOpen }"><span class="multiselect__single"
+                  v-if="values.length &amp;&amp; !isOpen">{{ values.length }} selected</span></template>
+            </multiselect>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-1 max-lg:col-span-3">
+        <searchComponent :my-search="search" @search="(data) => {
+  page = 1
+  search = data
+  getProducts('onClick', '/store')
 
+}"></searchComponent>
+      </div>
+    </div>
+    <div
+      class="mt-4 grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 max-sm:grid-cols-1 gap-4 justify-items-center">
+      <itemStoreCardComponent v-for="(product, index) in productList" :key="product.id" :my-product="product">
+      </itemStoreCardComponent>
+    </div>
+    <pagination v-if="total > 0" :total-pages="totalPages" :total="total" :per-page="perPage"
+      :current-page="currentPage" :has-more-pages="hasMorePages" :max-visible-buttons="totalPages" @pagechanged="(data) => {
+  page = data
+  getProducts('onClick', '/store')
+
+}">
+    </pagination>
   </div>
 </template>
 <script>
+import paginationMixin from '../../mixins/paginationMixin';
+import searchMixin from '../../mixins/searchMixin';
 import productListMixin from '../../mixins/product/productListMixin'
+import categoryListMixin from '../../mixins/category/categoryListMixin'
+import tagListMixin from '../../mixins/tag/tagListMixin'
+import itemStoreCardComponent from '../../components/store/itemStoreCardComponent.vue';
+import pagination from '../../components/widget/pagination.vue';
+import Multiselect from 'vue-multiselect'
+import searchComponent from '../../components/widget/searchComponent.vue';
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
-  mixins: [productListMixin],
+  components: { itemStoreCardComponent, pagination, Multiselect, searchComponent },
+  mixins: [searchMixin, paginationMixin, categoryListMixin, tagListMixin, productListMixin],
   auth: 'guest',
   layout: 'storeLayout',
+  data() {
+    return {
+      category: this.$route.query.category != undefined ? [] : this.$route.query.category,
+      tag: []
+    }
+  },
+  methods: {
+    sortByCategory() {
+      let req = "category=" + JSON.stringify(this.category)
+      this.request[0] = req
+      this.getProducts('onClick', '/store')
+
+    },
+    sortByTag() {
+      let req = "tag=" + JSON.stringify(this.tag)
+      this.request[1] = req
+      this.getProducts('onClick', '/store')
+
+    },
+    ...mapMutations({
+      setCart: 'cartStore/setCart'
+    })
+  },
   created() {
+    this.setCart(this.$cookies.get('cart'))
+    this.setRequest()
+    this.getCategories("All")
+    this.getTags("All")
     this.getProducts()
+
+    // update selected category
+    if (this.$route.query.category) this.category = JSON.parse(this.$route.query.category)
+
+    // update selected tag
+    if (this.$route.query.tag) this.tag = JSON.parse(this.$route.query.tag)
   }
 }
 </script>

@@ -13,6 +13,7 @@
     "@nuxtjs/auth-next": "5.0.0-1667386184.dfbbb54",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/i18n": "^7.3.0",
+    "cookie-universal-nuxt": "^2.2.2",
     "core-js": "^3.19.3",
     "gsap": "^3.11.4",
     "nuxt": "^2.15.8",
