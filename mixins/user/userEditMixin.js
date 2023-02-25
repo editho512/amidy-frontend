@@ -5,7 +5,7 @@ export default {
     }
   },
   created: function () {
-    this.editUser(this.$route.params.id)
+    this.editUser( this.$route.params.id != undefined ? this.$route.params.id : this.$auth.user.id)
   },
   methods: {
     editUser: function (id) {

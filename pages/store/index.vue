@@ -33,11 +33,11 @@
       </div>
       <div class="col-span-1 max-lg:col-span-3">
         <searchComponent :my-search="search" @search="(data) => {
-  page = 1
-  search = data
-  getProducts('onClick', '/store')
+          page = 1
+          search = data
+          getProducts('onClick', '/store')
 
-}"></searchComponent>
+        }"></searchComponent>
       </div>
     </div>
     <div
@@ -47,10 +47,10 @@
     </div>
     <pagination v-if="total > 0" :total-pages="totalPages" :total="total" :per-page="perPage"
       :current-page="currentPage" :has-more-pages="hasMorePages" :max-visible-buttons="totalPages" @pagechanged="(data) => {
-  page = data
-  getProducts('onClick', '/store')
+        page = data
+        getProducts('onClick', '/store')
 
-}">
+      }">
     </pagination>
   </div>
 </template>
@@ -89,13 +89,10 @@ export default {
       this.request[1] = req
       this.getProducts('onClick', '/store')
 
-    },
-    ...mapMutations({
-      setCart: 'cartStore/setCart'
-    })
+    }
+
   },
   created() {
-    this.setCart(this.$cookies.get('cart'))
     this.setRequest()
     this.getCategories("All")
     this.getTags("All")

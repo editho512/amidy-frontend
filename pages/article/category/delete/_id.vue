@@ -33,6 +33,8 @@ import showCategoryComponent from '../../../../components/category/showCategoryC
 import categoryEditMixin from '../../../../mixins/category/categoryEditMixin';
 
 export default {
+  middleware: ['auth'],
+
   layout: 'adminLayout',
   mixins: [categoryEditMixin],
   components: {

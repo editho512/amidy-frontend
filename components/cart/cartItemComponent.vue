@@ -24,7 +24,7 @@
       </p>
     </div>
     <div class="max-xl:col-span-7 max-xl:pt-2 max-xl:flex justify-center col-span-3">
-      <cartQunatityFormComponent :my-quantity="parseInt(item.quantity)"
+      <cartQunatityFormComponent :my-quantity="parseInt(item.quantity)" :error="error"
         @update="(quantity) => updateQuantity({ item, quantity })">
       </cartQunatityFormComponent>
     </div>
@@ -54,6 +54,12 @@ export default {
       default() {
         return []
       }
+    },
+    error: {
+      type: Array,
+      default() {
+        return []
+      }
     }
   },
   methods: {
@@ -70,7 +76,7 @@ export default {
   },
   computed: {
     total_amount() {
-      return this.item.price * this.item.quantity
+      return this.item.price_ttc * this.item.quantity
     }
   }
 }

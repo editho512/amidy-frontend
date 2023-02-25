@@ -32,6 +32,8 @@ import backIcon from '../../../components/button/backButton.vue';
 import newTagComponent from '../../../components/tag/newTagComponent.vue';
 
 export default {
+  middleware: ['auth'],
+
   layout: 'adminLayout',
 
   components: {

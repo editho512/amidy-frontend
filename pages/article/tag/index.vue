@@ -29,6 +29,8 @@ import addButton from '../../../components/button/addButton.vue';
 import listTagComponent from '../../../components/tag/listTagComponent.vue'
 
 export default {
+  middleware: ['auth'],
+
   layout: 'adminLayout',
   transition: {
     name: 'default',

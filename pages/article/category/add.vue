@@ -31,6 +31,8 @@ import cardComponent from '../../../components/widget/cardComponent.vue';
 import backIcon from '../../../components/button/backButton.vue';
 import newCategoryComponent from '../../../components/category/newCategoryComponent'
 export default {
+  middleware: ['auth'],
+
   layout: 'adminLayout',
 
   components: {

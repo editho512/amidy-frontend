@@ -14,18 +14,16 @@
         </div>
       </template>
       <template #body-card>
-        <addFormComponent :errors="errors"
-          :user="user"
-          :type-default="user.type"
-          :photo="{ file: null, url: (user.photo) ? $axios.defaults.baseURL + '/uploads/user/' + user.photo : null  }"
-          >
+        <addFormComponent :errors="errors" :user="user" :type-default="user.type"
+          :photo="{ file: null, url: (user.photo) ? $axios.defaults.baseURL + '/uploads/user/' + user.photo : null }">
         </addFormComponent>
 
       </template>
       <template #footer-card>
         <div class="flex justify-end pr-2 gap-2">
           <cancelButton @cancle="$router.push({ path: localePath('/collaborator/') })"></cancelButton>
-          <validateButton :disabled="editCollaborator.length === 0"  :loading="false" @validate="update"></validateButton>
+          <validateButton :disabled="editCollaborator.length === 0" :loading="false" @validate="update">
+          </validateButton>
         </div>
       </template>
 
@@ -44,6 +42,7 @@ import { mapActions, mapGetters } from 'vuex'
 import userEditMixin from '../../../mixins/user/userEditMixin';
 
 export default {
+  middleware: ['auth'],
   layout: 'adminLayout',
   mixins: [userEditMixin],
   name: 'index',
@@ -59,7 +58,7 @@ export default {
 
       await this.updateCollaborator(this.user.id).then((res) => {
         if (res.errors === undefined) this.$router.push({ path: this.localePath('/collaborator'), query: { action: 'updated' } })
-         else this.errors = res.errors
+        else this.errors = res.errors
       })
     },
     ...mapActions({

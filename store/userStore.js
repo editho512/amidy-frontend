@@ -4,6 +4,8 @@ export const state = () => ({
   login : {
     email: '',
     password: '',
+    password_confirmation: '',
+    name : ''
   },
   collaborator: {},
   userType : []
@@ -19,18 +21,23 @@ export const getters = {
   },
   getEditUser: (state) => {
     return state.collaborator
-  }
+  },
+
 }
 
 export const mutations = {
-
+  name(state, name ) {
+    state.name = name
+  },
   email(state, email ) {
     state.email = email
   },
   password(state, password ) {
     state.password = password
   },
-
+  password_confirmation(state, password_confirmation) {
+    state.password_confirmation = password_confirmation
+  },
   collaborator(state, collaborator) {
     state.collaborator = collaborator
   }
@@ -53,6 +60,25 @@ export const actions = {
       }).catch(({ response }) => {
           res.status = false
           res.errors = response
+        })
+
+      return res
+
+  },
+  async signup({ commit, state }) {
+      let res = {
+        status: true,
+        errors : null
+      }
+
+      await this.$axios.$post('/api/auth/register', {
+        email: state.email ,
+        password: state.password,
+        name: state.name,
+        password_confirmation: state.password_confirmation
+      }).catch(({ response }) => {
+          res.status = false
+          res.errors = response.data
         })
 
       return res

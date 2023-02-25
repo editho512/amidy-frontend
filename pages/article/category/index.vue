@@ -1,27 +1,27 @@
 <template>
-<div>
-  <h1 class="title-1"> {{ $t('sidebar.category') }} </h1>
+  <div>
+    <h1 class="title-1"> {{ $t('sidebar.category') }} </h1>
 
-  <cardComponent>
-    <template #header-card>
+    <cardComponent>
+      <template #header-card>
 
-      <div class="grid grid-cols-5 ">
-        <div class="col-span-4 max-md:col-span-5">
-          <h2 class="title-2">{{ $t('category.title') }}</h2>
+        <div class="grid grid-cols-5 ">
+          <div class="col-span-4 max-md:col-span-5">
+            <h2 class="title-2">{{ $t('category.title') }}</h2>
+          </div>
+          <div class="col-span-1  flex justify-end pr-2 max-sm:col-span-5 ">
+            <addButton @add="$router.push({ path: localePath('/article/category/add') })"></addButton>
+          </div>
         </div>
-        <div class="col-span-1  flex justify-end pr-2 max-sm:col-span-5 ">
-          <addButton @add="$router.push({ path: localePath('/article/category/add') })"></addButton>
-        </div>
-      </div>
 
-    </template>
-    <template #body-card>
+      </template>
+      <template #body-card>
 
-      <listCategoryComponent></listCategoryComponent>
+        <listCategoryComponent></listCategoryComponent>
 
-    </template>
-  </cardComponent>
-</div>
+      </template>
+    </cardComponent>
+  </div>
 </template>
 
 <script>
@@ -30,6 +30,7 @@ import addButton from '../../../components/button/addButton.vue';
 import listCategoryComponent from '../../../components/category/listCategoryComponent.vue';
 
 export default {
+  middleware: ['auth'],
   layout: 'adminLayout',
   transition: {
     name: 'default',

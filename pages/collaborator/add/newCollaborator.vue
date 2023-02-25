@@ -18,10 +18,10 @@
 
       </template>
       <template #footer-card>
-       <div class="flex justify-end pr-2 gap-2">
+        <div class="flex justify-end pr-2 gap-2">
           <cancelButton @cancle="$router.push({ path: localePath('/collaborator/') })"></cancelButton>
-          <validateButton :loading="false" @validate="save" ></validateButton>
-       </div>
+          <validateButton :loading="false" @validate="save"></validateButton>
+        </div>
       </template>
 
     </cardComponent>
@@ -38,9 +38,11 @@ import validateButton from '../../../components/button/validateButton.vue';
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
+  middleware: ['auth'],
+
   layout: 'adminLayout',
   data() {
-    return { validate: false , errors : []}
+    return { validate: false, errors: [] }
   },
   components: {
     cardComponent, backIcon, addFormComponent, cancelButton, validateButton
@@ -48,9 +50,9 @@ export default {
   methods: {
     async save() {
       await this.addCollaborator().then((res) => {
-        if (res.errors === undefined) this.$router.push({ path: this.localePath('/collaborator'), query : {action : 'added'} })
-              else this.errors = res.errors
-            })
+        if (res.errors === undefined) this.$router.push({ path: this.localePath('/collaborator'), query: { action: 'added' } })
+        else this.errors = res.errors
+      })
     },
     ...mapActions({
       'addCollaborator': 'userStore/addCollaborator'

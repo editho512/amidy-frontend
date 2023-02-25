@@ -30,6 +30,7 @@ export default {
     { src: '~/plugins/notifications-ssr', ssr: true },
     { src: '~/plugins/notifications-client', ssr: false },
     '~/plugins/Multiselect.js',
+    { src: '~/plugins/vue-stripe.js', ssr: false },
 
   ],
 
@@ -94,10 +95,33 @@ export default {
       laravelSanctum: {
         provider: 'laravel/sanctum',
         url: 'http://localhost:8000',
+        user: {
+          property: 'data',
+          // autoFetch: true
+        },
       },
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+        // required: true,
+        // type: 'Bearer'
+        },
+        user: {
+          property: 'data',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/api/callback/google', method: 'post' },
+          logout: { url: '/api/auth/logout', method: 'post' },
+          user: { url: '/api/user', method: 'get' }
+        }
+      }
     },
   },
   router: {
-    middleware: ['auth']
-  }
+  },
+  env: {
+    STRIPE_PK: process.env.STRIPE_PK,
+  },
 }

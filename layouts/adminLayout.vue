@@ -1,5 +1,4 @@
 <template>
-
   <div class="h-screen relative">
     <notifications position="bottom right" classes="vue-notification" />
 
@@ -63,7 +62,6 @@ export default {
   },
   methods: {
     onBeforeEnter(el) {
-      console.log("lasa")
       gsap.set(el, {
         xPercent: -100,
       })

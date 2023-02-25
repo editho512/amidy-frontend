@@ -35,4 +35,10 @@ export const convertToPrice = (price) => {
   return USDollar.format(price)
 }
 
+export const amount_ttc = (price, quantity, tva) => {
+  let tax_amount = (parseFloat(price) * parseFloat(tva)) / 100
+
+      return (parseFloat(quantity) * (parseFloat(price) + tax_amount))
+}
+
 

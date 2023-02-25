@@ -31,6 +31,8 @@ import cardComponent from '../../../../components/widget/cardComponent.vue';
 import backIcon from '../../../../components/button/backButton.vue';
 import newProductComponent from '../../../../components/product/newProductComponent.vue';
 export default {
+  middleware: ['auth'],
+
   layout: 'adminLayout',
   components: {
     cardComponent, backIcon, newProductComponent

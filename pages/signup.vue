@@ -1,12 +1,14 @@
 // pages/login.vue
 
 <template>
-
-  <div>
+  <div class="">
+    <div class="flex justify-center -mb-16 mt-2 ">
+      <buttonGoogleAuthComponent></buttonGoogleAuthComponent>
+    </div>
     <authComponent type="signup">
       <template v-slot:auth-content>
         <!-- content for the auth-content slot -->
-        <loginComponent @login="({ email, password }) => login(email, password)"></loginComponent>
+        <signupComponent></signupComponent>
       </template>
     </authComponent>
     i
@@ -17,12 +19,18 @@
 
 import authComponent from '../components/auth/authComponent.vue'
 import loginComponent from '../components/auth/login/loginComponent.vue'
+import signupComponent from '../components/auth/signup/signupComponent.vue';
+import buttonGoogleAuthComponent from '../components/auth/google/buttonGoogleAuthComponent.vue';
 
 export default {
-  auth: false,
+  middleware: ['auth'],
+  auth: 'guest',
+  layout: 'storeLayout',
   components: {
     authComponent,
-    loginComponent
+    loginComponent,
+    signupComponent,
+    buttonGoogleAuthComponent
   },
 
 }

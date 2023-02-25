@@ -1,11 +1,11 @@
 <template>
   <div>
     <searchComponent :my-search="search" @search="(data) => {
-  page = 1
-  search = data
-  getUserList('onClick')
+      page = 1
+      search = data
+      getUserList('onClick')
 
-}"></searchComponent>
+    }"></searchComponent>
     <listCollaboratorSkeleton v-if="userList == undefined || userList.length == 0"></listCollaboratorSkeleton>
     <tableComponent v-else>
       <template #table-header>
@@ -16,9 +16,9 @@
             </div>
             <div class="col-span-1">
               <sortComponent :my-order="sortBy.name" @sort="(sense) => {
-  sortBy.name = sense
-  getUserList('onClick')
-}"></sortComponent>
+                sortBy.name = sense
+                getUserList('onClick')
+              }"></sortComponent>
             </div>
           </th>
           <th scope="col" class="text-lg  text-primary font-extrabold px-6 py-4 text-left max-md:hidden">
@@ -61,7 +61,8 @@
           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap max-sm:hidden">
             <seeButton></seeButton>
             <editButton @edit="$router.push({ path: localePath('/collaborator/edit/' + user.id) })"></editButton>
-            <removeButton @remove="$router.push({ path: localePath('/collaborator/delete/' + user.id) })"></removeButton>
+            <removeButton @remove="$router.push({ path: localePath('/collaborator/delete/' + user.id) })">
+            </removeButton>
           </td>
         </tr>
 
@@ -69,9 +70,9 @@
     </tableComponent>
     <pagination v-if="total > 0" :total-pages="totalPages" :total="total" :per-page="perPage"
       :current-page="currentPage" :has-more-pages="hasMorePages" :max-visible-buttons="totalPages" @pagechanged="(data) => {
-  page = data
-  getUserList('onClick')
-}">
+        page = data
+        getUserList('onClick')
+      }">
     </pagination>
   </div>
 

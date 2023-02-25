@@ -28,6 +28,8 @@ import addButton from '../../../components/button/addButton.vue';
 import listProductComponent from '../../../components/product/listProductComponent.vue';
 
 export default {
+  middleware: ['auth'],
+
   layout: 'adminLayout',
   transition: {
     name: 'default',

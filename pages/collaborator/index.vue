@@ -26,13 +26,14 @@ import cardComponent from '../../components/widget/cardComponent.vue';
 import addButton from '../../components/button/addButton.vue';
 import listCollaboratorComponent from '../../components/collaborator/listCollaboratorComponent.vue';
 export default {
+  middleware: ['auth'],
   transition: {
     name: 'default',
     mode: 'out-in'
   },
   layout: 'adminLayout',
   components: {
-    cardComponent,  addButton, listCollaboratorComponent
+    cardComponent, addButton, listCollaboratorComponent
   },
 
   mounted() {

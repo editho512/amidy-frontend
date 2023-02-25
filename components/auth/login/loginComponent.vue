@@ -1,14 +1,27 @@
 <template>
   <div>
+
+    <div class="mt-8" v-if="$route.query.status == 'signedup'">
+      <div class="w-full ">
+        <p class="rounded-xl bg-primary text-white py-2 pl-2
+        ">Chech your email for activating your account <button
+            class="bg-third rounded-xl text-white px-2 py-1  transition ease-in-out delay-75 duration-200 hover:scale-125 hover:text-primary ml-3">Resend</button>
+        </p>
+      </div>
+    </div>
+
     <div class="mt-8">
       <div class="w-full">
         <label for="email" class="auth-label">EMAIL </label>
 
       </div>
       <div class="w-full mt-1">
-        <input class="auth-input" type="text" placeholder="Type your first email" name="email" v-model="email" required autocomplete="off">
+        <input :class="['auth-input', errors.email != undefined ? 'input-auth-error text-red-700' : '']" type="text"
+          placeholder="Type your first email" name="email" v-model="email" required autocomplete="off">
 
       </div>
+      <p v-if="errors.email != undefined" class="text-red-700">{{ errors.email[0] }}</p>
+
     </div>
     <div class="mt-6">
       <div class="w-full">
@@ -31,7 +44,7 @@
         </button>
       </div>
       <div class="w-max">
-        <button
+        <button @click="$router.push({ path: localePath('/signup') })"
           class="bg-third border-b-2 border-primary text-primary pb-1 transition ease-in-out delay-75 duration-200 hover:scale-125">Don't
           have any account
         </button>
@@ -39,7 +52,9 @@
     </div>
     <div class="mt-12 flex ">
       <div class="w-max">
-        <button class="bg-third border-b-2 border-gray-600  text-gray-600 pb-1 transition ease-in-out delay-75 duration-200 hover:scale-125">Forgot my password</button>
+        <button
+          class="bg-third border-b-2 border-gray-600  text-gray-600 pb-1 transition ease-in-out delay-75 duration-200 hover:scale-125">Forgot
+          my password</button>
       </div>
     </div>
   </div>
@@ -51,7 +66,8 @@ export default {
   data() {
     return {
       email: '',
-      password : ''
+      password: '',
+      errors: {}
     }
   },
   methods: {
@@ -63,9 +79,11 @@ export default {
         if (data.status == true) {
           //if grant
         }
+        this.errors = data.errors.data
       })
     }
   },
+
 
 }
 </script>

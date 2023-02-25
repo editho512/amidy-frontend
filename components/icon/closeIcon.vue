@@ -10,11 +10,11 @@ export default {
   props: {
     h: {
       type: String,
-      default: 4
+      default: "4"
     },
     w: {
       type: String,
-      default: 4
+      default: "4"
     }
   }
 }

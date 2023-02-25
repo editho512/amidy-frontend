@@ -12,10 +12,12 @@
 
 <script>
 export default {
+  middleware: ['auth'],
+
   layout: 'adminLayout',
   data() {
     return {
-      user: this.$auth.user.data,
+      user: this.$auth.user,
     }
   },
   methods: {

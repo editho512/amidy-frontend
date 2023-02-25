@@ -1,27 +1,27 @@
 <template>
   <div>
-      <cardComponent>
-        <template #header-card>
-          <div class="grid grid-cols-5 ">
-            <div class="col-span-4 max-md:col-span-5">
-              <h2 class="title-2">{{ $t('setting.title') }}</h2>
-            </div>
-            <div class="col-span-1 max-md:col-span-5 text-right pr-2">
-              <editButton v-if="!edit" @edit="edit=true"></editButton>
-            </div>
+    <cardComponent>
+      <template #header-card>
+        <div class="grid grid-cols-5 ">
+          <div class="col-span-4 max-md:col-span-5">
+            <h2 class="title-2">{{ $t('setting.title') }}</h2>
+          </div>
+          <div class="col-span-1 max-md:col-span-5 text-right pr-2">
+            <editButton v-if="!edit" @edit="edit = true"></editButton>
+          </div>
 
-          </div>
-        </template>
-        <template #body-card>
-          <generalFormComponent :errors="errors" :setting="settings" :edit="edit"></generalFormComponent>
-        </template>
-        <template #footer-card>
-          <div class="flex justify-end pr-2 gap-2">
-            <cancelButton v-if="edit" @cancle="reset"></cancelButton>
-            <validateButton @validate="validate" :disabled="!edit" ></validateButton>
-          </div>
-        </template>
-      </cardComponent>
+        </div>
+      </template>
+      <template #body-card>
+        <generalFormComponent :errors="errors" :setting="settings" :edit="edit"></generalFormComponent>
+      </template>
+      <template #footer-card>
+        <div class="flex justify-end pr-2 gap-2">
+          <cancelButton v-if="edit" @cancle="reset"></cancelButton>
+          <validateButton @validate="validate" :disabled="!edit"></validateButton>
+        </div>
+      </template>
+    </cardComponent>
 
   </div>
 </template>
@@ -37,6 +37,8 @@ import settingMixin from '../../mixins/setting/settingMixin'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  middleware: ['auth'],
+
   mixins: [settingMixin],
   transition: {
     name: 'default',

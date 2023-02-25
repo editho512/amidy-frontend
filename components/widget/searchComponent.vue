@@ -1,5 +1,5 @@
 <template>
-  <div class=" flex justify-end">
+  <div class=" flex justify-end ">
     <div class="w-full">
       <div class="flex items-center">
         <label for="simple-search" class="sr-only">Search</label>
@@ -13,7 +13,7 @@
             </svg>
           </div>
           <input type="text" id="simple-search"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full pl-10 p-2.5   focus:outline-none"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full pl-10 p-2.5   focus:outline-none "
             placeholder="Search" v-model="search" required>
         </div>
         <button type="button" v-on:click="$emit('search', search)"

@@ -57,6 +57,8 @@ import statisticProductComponent from '../../../../components/product/statisticP
 import statisticProductSkeleton from '../../../../components/product/statisticProductSkeleton.vue';
 import showPhotoListSkeleton from '../../../../components/product/showPhotoListSkeleton.vue';
 export default {
+  middleware: ['auth'],
+
   layout: 'adminLayout',
   mixins: [productEditMixin],
   components: {
