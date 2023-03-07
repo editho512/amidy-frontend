@@ -25,15 +25,13 @@
           <itemSidebarCustomerComponent v-if="!$auth.loggedIn" url="login" name="LOG IN"></itemSidebarCustomerComponent>
           <itemSidebarCustomerComponent v-if="!$auth.loggedIn" url="signup" name="SIGN UP">
           </itemSidebarCustomerComponent>
-          <itemSidebarCustomerComponent url="store" name="STORE"></itemSidebarCustomerComponent>
-          <itemSidebarCustomerComponent url="about-us" name="ABOUT US">
+          <itemSidebarCustomerComponent url="contact-us" name="CONTACT US">
           </itemSidebarCustomerComponent>
           <li class="max-md:hidden" v-if="$auth.loggedIn">
             <profileCardComponent></profileCardComponent>
           </li>
           <li class="px-2 w-full border-t-2 border-third pt-2 hidden max-md:block">
             <menuProfileComponent></menuProfileComponent>
-
           </li>
         </ul>
       </div>

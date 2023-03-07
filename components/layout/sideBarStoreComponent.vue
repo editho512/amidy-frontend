@@ -61,7 +61,7 @@ import cartButtonComponent from '../cart/cartButtonComponent.vue';
 import profileCardComponent from './profileCardComponent.vue';
 import menuProfileComponent from './menuProfileComponent.vue';
 
-import appLogoAnimate from "../gsap/appLogoAnimate.js"
+import appLogoAnimate from "../../gsap/appLogoAnimate.js"
 
 export default {
   components: { itemSidebarCustomerComponent, cartButtonComponent, profileCardComponent, menuProfileComponent },

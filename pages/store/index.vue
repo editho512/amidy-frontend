@@ -3,10 +3,10 @@
     <div class="grid grid-cols-3 p-8 gap-8 z-30">
       <div class="col-span-1 max-lg:col-span-3">
         <div class="grid grid-cols-5">
-          <div class="col-span-1">
+          <div class="col-span-1 max-[400px]:col-span-5">
             <label for="category">Category</label>
           </div>
-          <div class="col-span-4">
+          <div class="col-span-4 max-[400px]:col-span-5">
             <multiselect v-model="category" :options="categoryList" :multiple="true" :close-on-select="false"
               :clear-on-select="false" :preserve-search="true" :placeholder="$t('product.add.placeholderCategory')"
               label="name" track-by="name" :preselect-first="true" @input="sortByCategory">
@@ -18,10 +18,10 @@
       </div>
       <div class="col-span-1 max-lg:col-span-3">
         <div class="grid grid-cols-5">
-          <div class="col-span-1">
+          <div class="col-span-1 max-[400px]:col-span-5">
             <label for="">Tag</label>
           </div>
-          <div class="col-span-4">
+          <div class="col-span-4 max-[400px]:col-span-5">
             <multiselect v-model="tag" :options="tagList" :multiple="true" :close-on-select="false"
               :clear-on-select="false" :preserve-search="true" :placeholder="$t('product.add.placeholderTag')"
               label="name" track-by="name" :preselect-first="true" @input="sortByTag">
@@ -42,16 +42,18 @@
     </div>
     <div
       class="mt-4 grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 max-sm:grid-cols-1 gap-4 justify-items-center">
+
       <itemStoreCardComponent v-for="(product, index) in productList" :key="product.id" :my-product="product">
       </itemStoreCardComponent>
     </div>
-    <pagination v-if="total > 0" :total-pages="totalPages" :total="total" :per-page="perPage"
+    <pagination class="mt-2" v-if="total > 0" :total-pages="totalPages" :total="total" :per-page="perPage"
       :current-page="currentPage" :has-more-pages="hasMorePages" :max-visible-buttons="totalPages" @pagechanged="(data) => {
         page = data
         getProducts('onClick', '/store')
 
       }">
     </pagination>
+    <footerComponent></footerComponent>
   </div>
 </template>
 <script>
@@ -64,6 +66,7 @@ import itemStoreCardComponent from '../../components/store/itemStoreCardComponen
 import pagination from '../../components/widget/pagination.vue';
 import Multiselect from 'vue-multiselect'
 import searchComponent from '../../components/widget/searchComponent.vue';
+
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {

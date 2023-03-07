@@ -11,7 +11,7 @@
         <signupComponent></signupComponent>
       </template>
     </authComponent>
-    i
+
   </div>
 </template>
 <script>

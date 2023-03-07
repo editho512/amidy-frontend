@@ -11,7 +11,7 @@
         <loginComponent @login="({ email, password }) => login(email, password)"></loginComponent>
       </template>
     </authComponent>
-    i
+
   </div>
 </template>
 <script>

@@ -42,6 +42,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxt/postcss8',
+    'nuxt-gsap-module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -51,7 +52,15 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxtjs/i18n',
     'cookie-universal-nuxt',
+
   ],
+
+  gsap: {
+    extraPlugins: {
+      scrollTo: true,
+      scrollTrigger: true
+    }
+  },
 
   i18n: {
     locales: [
